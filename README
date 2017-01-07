@@ -1,8 +1,8 @@
-
-Piksemel 1.3
+ 
+İksemel 3.0.1
 ============
 
-Python XML API based on the iksemel library.
+Python 3 XML API based on the iksemel library.
 Copyright (C) 2005-2006 TUBITAK/UEKAE
 
 This program is free software; you can redistribute it and/or modify it
@@ -18,7 +18,8 @@ You dont need anything other than an installed Python framework.
 iksemel-lite source is included and compiled built-in to the module.
 
 To compile and install:
-# ./setup.py install
+# python3 setup.py build 
+# python3 setup.py install
 
 then you can import the piksemel module in your python programs.
 

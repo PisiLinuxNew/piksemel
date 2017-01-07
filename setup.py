@@ -1,8 +1,6 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2006, TUBITAK/UEKAE
-#
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*- 
+# 
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the
 # Free Software Foundation; either version 2 of the License, or (at your
@@ -17,7 +15,8 @@ import subprocess
 from distutils.core import setup, Extension
 from distutils.command.install import install
 
-version='1.3.1'
+
+version='3.0.1'
 
 distfiles = """
     README
@@ -29,7 +28,7 @@ distfiles = """
 """
 
 if 'dist' in sys.argv:
-    distdir = "piksemel-%s" % version
+    distdir = "iksemel-%s" % version
     list = []
     for t in distfiles.split():
         list.extend(glob.glob(t))
@@ -44,7 +43,7 @@ if 'dist' in sys.argv:
             if not os.path.exists(dn):
                 os.mkdir(dn)
         shutil.copy(file_, os.path.join(distdir, file_))
-    os.popen("tar -czf %s %s" % ("piksemel-" + version + ".tar.gz", distdir))
+    os.popen("tar -czf %s %s" % ("iksemel-" + version + ".tar.gz", distdir))
     shutil.rmtree(distdir)
     sys.exit(0)
 
@@ -54,9 +53,9 @@ elif 'test' in sys.argv:
         if test.endswith(".py"):
             if 0 != subprocess.call(["tests/" + test]):
                 fail += 1
-                print test, "failed!"
+                print(test, "failed!")
     if not fail:
-        print "all tests passed :)"
+        print("all tests passed :)")
         sys.exit(0)
     sys.exit(1)
 
@@ -74,10 +73,10 @@ class Install(install):
 
 
 setup(
-    name='piksemel',
+    name='iksemel',
     version=version,
-    ext_modules=[Extension('piksemel',
-                            ['src/iksemel.c', 'src/pyiks.c'],
+    ext_modules=[Extension('iksemel',
+                            ['src/iksemel.c','src/pyiks.c'],
                             extra_compile_args=["-fvisibility=hidden"])],
     cmdclass = {
         'install' : Install

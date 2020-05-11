@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #
 # Copyright (C) 2006, TUBITAK/UEKAE
@@ -17,7 +17,7 @@ import subprocess
 from distutils.core import setup, Extension
 from distutils.command.install import install
 
-version='1.3.1'
+version='2.0.0'
 
 distfiles = """
     README
@@ -52,11 +52,11 @@ elif 'test' in sys.argv:
     fail = 0
     for test in os.listdir("tests"):
         if test.endswith(".py"):
-            if 0 != subprocess.call(["tests/" + test]):
+            if 0 != subprocess.call(["python3", "tests/" + test]):
                 fail += 1
-                print test, "failed!"
+                print(test, "failed!")
     if not fail:
-        print "all tests passed :)"
+        print("all tests passed :)")
         sys.exit(0)
     sys.exit(1)
 
@@ -68,7 +68,7 @@ class Install(install):
             self.install_platlib = '$base/lib/pardus'
             self.install_purelib = '$base/lib/pardus'
         install.finalize_options(self)
-    
+
     def run(self):
         install.run(self)
 
@@ -76,6 +76,7 @@ class Install(install):
 setup(
     name='piksemel',
     version=version,
+    # packages = ['piksemel',],
     ext_modules=[Extension('piksemel',
                             ['src/iksemel.c', 'src/pyiks.c'],
                             extra_compile_args=["-fvisibility=hidden"])],
